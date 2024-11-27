@@ -9,8 +9,6 @@ Extract and map the locations of available samples within a specified area, for 
 
 Extract abundance data about specified taxa from the CPR-BEAMS resource on BCO-DMO
 
-Return data-availability information a specified example taxon within an example area, for an example range of dates
-
 Return a monthly time-series for abundance of a specified example taxon within an example area, for an example range of dates
 
 Grid the data and produce localised seasonal abundance profiles for representative example taxa
