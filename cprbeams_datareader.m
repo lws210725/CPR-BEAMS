@@ -96,6 +96,7 @@ for y=1:lastyear+1-firstyear
         for lat1=1:lat1max
             for long1=1:long1max
                 dataset{y,m,lat1,long1}=[];
+                datasetinfo{y,m,lat1,long1}=[firstyear+y-1 m southlim+(lat1-1)*squaredeg -westlim+(long1-1)*squaredeg];
             end
         end
     end
@@ -112,7 +113,10 @@ for y=1:lastyear+1-firstyear
         for lat1=1:lat1max
             for long1=1:long1max
                 abundseries{lat1,long1}((y-1)*12+m)=nanmean(dataset{y,m,lat1,long1}); %monthly timeseries with NaNs
-
+                seriesyear{lat1,long1}((y-1)*12+m)=datasetinfo{y,m}(1);
+                seriesmonth{lat1,long1}((y-1)*12+m)=datasetinfo{y,m}(2);
+                serieslat{lat1,long1}((y-1)*12+m)=datasetinfo{y,m}(3);
+                serieslong{lat1,long1}((y-1)*12+m)=datasetinfo{y,m}(4);
             end
         end
     end
@@ -222,6 +226,43 @@ for lat1=1:lat1max
         end
     end
 end
+
+% %these variables can be used for further analysis
+
+% dataset
+% %lists the abundances found in each year/month/lat/long examined
+
+% datasetinfo
+% %records the year, month, lat and long (bottom left corner of square from which the data is taken) associated with each of the abundances in
+% %dataset
+
+% abundseries
+% %mean of the abundances found in each square in each month examined, NaN where
+% %not available
+
+% mabundseries
+% %median of the mean monthly abundances found (a seasonal profile) in each square, NaN where
+% %not available
+
+% nnabundseries
+% %time-series made by filling missing values in abundseries with
+% %mabundseries values where available
+
+% seriesyear
+% %records the year associated with each of the abundances in
+% % abundseries and nnabundseries
+
+% seriesmonth
+% %records the month associated with each of the abundances in
+% % abundseries and nnabundseries
+
+% serieslat
+% %records the lat of the bottom left corner of the square associated with each of the abundances in
+% % abundseries and nnabundseries
+
+% serieslong
+% %records the long of the bottom left corner of the square associated with each of the abundances in
+% % abundseries and nnabundseries
 
 set(gcf, 'paperpositionmode','manual','paperunits','inches','paperposition',[0 0 eastlim+westlim northlim-southlim],'papersize',[eastlim+westlim northlim-southlim])
 print(gcf,'-djpeg', '-r300', 'CPRBEAMStimeseriesexample.jpg')
