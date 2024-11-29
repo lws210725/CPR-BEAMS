@@ -93,6 +93,7 @@ abund=taxonabundance(useindex(in));
 for y=1:lastyear+1-firstyear
     for m=1:12
                 dataset{y,m}=[];
+                datasetinfo{y,m}=[firstyear+y-1 m];
     end
 end
 
@@ -105,7 +106,8 @@ end
 for y=1:lastyear+1-firstyear
     for m=1:12
                 abundseries((y-1)*12+m)=nanmean(dataset{y,m}); %monthly timeseries with NaNs
-
+                seriesyear((y-1)*12+m)=datasetinfo{y,m}(1);
+                seriesmonth((y-1)*12+m)=datasetinfo{y,m}(2);
     end
 end
 
@@ -152,26 +154,57 @@ xlabel('longitude')
 ylabel('latitiude')
 xlim([min(polylong)-1 max(polylong)+1])
 ylim([min(polylat)-1 max(polylat)+1])
+title('samples')
 
 subplot(2,2,2) %monthly abundances constructed from samples in the area
             plot(firstyear+1/12:1/12:lastyear+1,abundseries); 
 xlabel('year')
 ylabel('abundance')
+title(taxon_selection)
 
 subplot(2,2,3) %median monthly values
             plot(mabundseries,'r');
 xlabel('month')
 ylabel('median abundance')
-            
+title('seasonal profile')         
             
 subplot(2,2,4) %filled time-series
-
+hold on;
             plot(firstyear+1/12:1/12:lastyear+1,nnabundseries,'r');
             plot(firstyear+1/12:1/12:lastyear+1,abundseries,'b.-'); 
             xlim([firstyear-1 lastyear+1])
  xlabel('year')
 ylabel('abundance (missing values filled)')
+title('time-series')
 
+% %these variables can be used for further analysis
+
+% dataset
+% %lists the abundances found in each month examined
+
+% datasetinfo
+% %records the year and month associated with each of the abundances in
+% %dataset
+
+% abundseries
+% %mean of the abundances found in each month examined, NaN where
+% %not available
+
+% mabundseries
+% %median of the mean monthly abundances found (a seasonal profile), NaN where
+% %not available
+
+% nnabundseries
+% %time-series made by filling missing values in abundseries with
+% %mabundseries values where available
+
+% seriesyear
+% %records the year associated with each of the abundances in
+% % abundseries and nnabundseries
+
+% seriesmonth
+% %records the month associated with each of the abundances in
+% % abundseries and nnabundseries
 
 set(gcf, 'paperpositionmode','manual','paperunits','inches','paperposition',[0 0 10 10],'papersize',[10 10])
 print(gcf,'-djpeg', '-r300', 'CPRBEAMStimeseriesexample_arearestriction.jpg')
