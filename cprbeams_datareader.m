@@ -61,19 +61,6 @@ useindex=find((lat>=southlim).*(lat<northlim).*(long>=-westlim).*(long<eastlim).
 %restricts the data to a box
 
 
-polylong=[-71.4 -70.4 -70.4 -71.4];
-polylat=[39 39.5 41.5 41.5];
-in = inpolygon(long(useindex),lat(useindex),polylong,polylat);
-% in = inpolygon(xq,yq,xv,yv) returns in indicating if the query points specified by xq and yq are inside or on the edge of the polygon area defined by xv and yv.
-% note that the polygon is drawn on a flat plate projection, not on the
-% globe, and the edges do not correspond to the shortest distance between
-% vertices on the globe.
-% [in,on] = inpolygon(xq,yq,xv,yv) also returns on indicating if the query points are on the edge of the polygon area.
-figure; line(polylong,polylat)
-hold on; scatter(long(useindex(in)),lat(useindex(in)))
-
-figure; scatter(MidPoint_Date_UTC(useindex(in)),taxonabundance(useindex(in)))
-
 squaredeg=2;
 nanthreshold=0.5;
 
