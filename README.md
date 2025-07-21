@@ -18,9 +18,15 @@ Grid the data and produce localised monthly abundance timeseries for representat
 Grid the data and produce localised monthly abundance timeseries for representative example taxa, highlighting missing samples and backfilling the data (with the local median value for any given month)
 
 Initial code for the 2023/2024 version of this project is available on https://github.com/lws050721/CPR-BEAMS and includes
+
 cprbeams_datareader.m
+
 cprbeams_datareader_arearestriction.m
-which read BCO-DMO data to end of 2021.   New code for the 2024/2025 version of this project is available on https://github.com/lws210725/CPR-BEAMS and includes the above plus 
+
+which read BCO-DMO data to end of 2021.   It is preserved here to assist with backwards compatibility.   New code for the 2024/2025 version of this project is available on https://github.com/lws210725/CPR-BEAMS and includes the above plus 
+
 cprbeams_datareader_1958_2022.m
+
 cprbeams_datareader_arearestriction_1958_2022.m
+
 which reads BCO-DMO data to end of 2022.   A further update is anticipated in 2026.
