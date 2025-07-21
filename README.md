@@ -23,7 +23,7 @@ cprbeams_datareader.m
 
 cprbeams_datareader_arearestriction.m
 
-which read BCO-DMO data to end of 2021.   It is preserved here to assist with backwards compatibility.   New code for the 2024/2025 version of this project is available on https://github.com/lws210725/CPR-BEAMS and includes the above plus 
+which read BCO-DMO data to end of 2021.   New code for the 2024/2025 version of this project is available on https://github.com/lws210725/CPR-BEAMS and includes the above plus 
 
 cprbeams_datareader_1958_2022.m
 
