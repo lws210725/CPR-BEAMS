@@ -30,3 +30,7 @@ cprbeams_datareader_1958_2022.m
 cprbeams_datareader_arearestriction_1958_2022.m
 
 which reads BCO-DMO data to end of 2022.   A further update is anticipated in 2026.
+
+To identify samples in the data belonging to a particular route, use 
+
+cprbeams_routefinder_1958_2022.m
