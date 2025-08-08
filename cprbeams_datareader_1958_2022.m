@@ -101,10 +101,10 @@ for y=1:lastyear+1-firstyear
         for lat1=1:lat1max
             for long1=1:long1max
                 abundseries{lat1,long1}((y-1)*12+m)=nanmean(dataset{y,m,lat1,long1}); %monthly timeseries with NaNs
-                seriesyear{lat1,long1}((y-1)*12+m)=datasetinfo{y,m}(1);
-                seriesmonth{lat1,long1}((y-1)*12+m)=datasetinfo{y,m}(2);
-                serieslat{lat1,long1}((y-1)*12+m)=datasetinfo{y,m}(3);
-                serieslong{lat1,long1}((y-1)*12+m)=datasetinfo{y,m}(4);
+                seriesyear{lat1,long1}((y-1)*12+m)=datasetinfo{y,m,lat1,long1}(1);
+                seriesmonth{lat1,long1}((y-1)*12+m)=datasetinfo{y,m,lat1,long1}(2);
+                serieslat{lat1,long1}((y-1)*12+m)=datasetinfo{y,m,lat1,long1}(3);
+                serieslong{lat1,long1}((y-1)*12+m)=datasetinfo{y,m,lat1,long1}(4);
             end
         end
     end
@@ -255,3 +255,4 @@ print(gcf,'-djpeg', '-r300', 'CPRBEAMStimeseriesexample_2022.jpg')
 % serieslong
 % %records the long of the bottom left corner of the square associated with each of the abundances in
 % % abundseries and nnabundseries
+
